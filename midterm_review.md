@@ -13,3 +13,6 @@ After `syscall(regstate* regs)` returns, we have to first check if the process i
 * Why do we disable interrupts before calling `swapgs`: otherwise, if an interrupt occurred after `swapgs`, the exception entry would think we are in kernel mode (so it wouldn't `swapgs`) but this would cause chaos as the program would start executing on the user stack!!!!.
 
 We finally return with `iretq` which enables interrupts.
+
+# How does Exceptions Work
+IST: Interrupt Stack Table
