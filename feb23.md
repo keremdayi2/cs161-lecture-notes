@@ -63,3 +63,12 @@ How does linux distinguish between:
 * Thrashing can also occur if the OS has a bad eviction strategy, bad prefetching strategy.
 * There is inherently too much demand for physical memory space
 
+## Least Recently Used (LRU) Page Replacement
+* Intuition: A page that hasn't been used recently will not be used in the near future. Let's evict it
+* LRU is a good eviction strategy, but not easy to implement efficiently !!!
+* In a naive implementation, the kernel has a software managed list of in-memory virtual pages.
+    * On each access, the kernel moves the accessed page to the fron of the list
+* Problem 1: How do you detect memory accesses? You have to use page faults
+* Problem 2: Finding the accessed page (to move it to the front of the list) is $\mathcal{O}(N)$.
+## The clock algorithm for page replacement
+* The clock algorithm approximates LRU.
